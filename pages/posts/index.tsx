@@ -1,19 +1,46 @@
-import { getSession } from 'next-auth/client';
 import prisma from '../../lib/prisma';
 
-// POST /api/post
-// Required fields in body: title
-// Optional fields in body: content
-export default async function handle(req, res) {
-  const { title, content } = req.body;
+import React from 'react';
+import { GetStaticProps } from 'next';
+import Layout from '../../components/Layout';
+import Post, { PostProps } from '../../components/Post';
 
-  const session = await getSession({ req });
-  const result = await prisma.post.create({
-    data: {
-      title: title,
-      content: content,
-      author: { connect: { email: session?.user?.email } },
+export const getStaticProps: GetStaticProps = async () => {
+  const feed = [
+    {
+      id: 1,
+      title: 'Prisma is the perfect ORM for Next.js',
+      content:
+        '[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!',
+      published: false,
+      author: {
+        name: 'Nikolas Burk',
+        email: 'burk@prisma.io',
+      },
     },
-  });
-  res.json(result);
-}
+  ];
+  return { props: { feed } };
+};
+
+type Props = {
+  feed: PostProps[];
+};
+
+const Blog: React.FC<Props> = (props) => {
+  return (
+    <Layout>
+      <div className="page">
+        <h1>Public Posts</h1>
+        <main>
+          {props.feed.map((post) => (
+            <div key={post.id} className="post">
+              <Post post={post} />
+            </div>
+          ))}
+        </main>
+      </div>
+    </Layout>
+  );
+};
+
+export default Blog;

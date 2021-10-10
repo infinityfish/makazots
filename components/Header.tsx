@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       <div className="left">
         <Link href="/">
           <a className="bold" data-active={isActive('/')}>
-            Feed
+            MakazoTS
           </a>
         </Link>
       </div>
@@ -75,11 +75,11 @@ const Header: React.FC = () => {
       <div className="left">
         <Link href="/">
           <a className="bold" data-active={isActive('/')}>
-            Feed
+            MakazoTS
           </a>
         </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
+        <Link href="/posts/drafts">
+          <a data-active={isActive('/posts/drafts')}>My drafts</a>
         </Link>
         <style jsx>{`
           .bold {
