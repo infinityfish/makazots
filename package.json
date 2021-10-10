@@ -9,9 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.4.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.3",
+    "@prisma/client": "^3.2.1",
+    "formik": "^2.2.9",
     "next": "11.1.2",
+    "next-auth": "^3.29.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-request": "^3.2.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/react": "17.0.27",
